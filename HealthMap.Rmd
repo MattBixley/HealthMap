@@ -8,12 +8,13 @@ output:
   pdf_document: default
 ---
 
-```{r setup, include=FALSE, cache=T}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+```
 
+```{r readdata, cache = T, include = F}
 hdat <- read_csv(file="data/nz-health-survey-2016-17-regional-update-dhb-prevalences.zip")
-
 ```
 
 ## Mapping New Zealand Health Data
@@ -27,7 +28,10 @@ This is a reasonable chunk of data, `r nrow(hdat)` lines with `r ncol(hdat)` col
 
 lets make a super simple plot with something in the data
 ```{r}
-newdat <- hdat %>% filter(.,short.description=="ADHD", type=="STD",sex!="All")
+newdat <- hdat %>% filter(.,short.description == "ADHD", 
+                          type == "STD", 
+                          sex != "All")
+
 ggplot(newdat, aes(Prevalence_Mean,region,col=sex)) + geom_point()
 ```
 
