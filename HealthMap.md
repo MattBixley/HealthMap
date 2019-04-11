@@ -27,7 +27,7 @@ newdat <- hdat %>% filter(., short.description == "ADHD", type == "STD", sex !=
 ggplot(newdat, aes(Prevalence_Mean, region, col = sex)) + geom_point()
 ```
 
-![](HealthMap_files/figure-markdown_github/unnamed-chunk-1-1.png)
+![](HealthMap_files/figure-markdown_github/unnamed-chunk-1-1.jpeg)
 
 References
 ==========
