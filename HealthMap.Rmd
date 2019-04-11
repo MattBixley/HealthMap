@@ -2,13 +2,16 @@
 title: "Health Mapping"
 author: "Matt Bixley"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
-output:
-  github_document:
-    toc: true
-    toc_depth: 2
-    fig_width: 9
-    fig_height: 5
+output: 
+  pdf_document:
     dev: jpeg
+    df_print: kable
+    fig_caption: yes
+    fig_height: 4
+    fig_width: 7
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -31,7 +34,7 @@ This is a reasonable chunk of data, `r nrow(hdat)` lines with `r ncol(hdat)` col
 
 ## Plot
 lets make a super simple plot with something in the data
-```{r}
+```{r ADHD}
 newdat <- hdat %>% filter(.,short.description == "ADHD", 
                           type == "STD", 
                           sex != "All")
