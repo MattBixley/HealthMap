@@ -8,6 +8,7 @@ output:
     toc_depth: 2
     keep_md: yes
   pdf_document: default
+  github_document: default
 ---
 
 ```{r setup, include=FALSE}
