@@ -8,13 +8,7 @@ output:
   pdf_document: default
 ---
 
-```{r setup, include=FALSE, cache=T}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
 
-hdat <- read_csv(file="data/nz-health-survey-2016-17-regional-update-dhb-prevalences.zip")
-
-```
 
 ## Mapping New Zealand Health Data
 
@@ -22,12 +16,15 @@ Lets take some health data from the [Ministry of Health](https://minhealthnz.shi
 
 
 
-This is a reasonable chunk of data, `r nrow(hdat)` lines with `r ncol(hdat)` columns with these headers   
-***`r colnames(hdat)`***
+This is a reasonable chunk of data, 466245 lines with 15 columns with these headers   
+***population, short.description, region, type, year, agegroup, sex, Ethnicity, nzdep_quin, Prevalence_Mean, Prevalence_Mean.SE, CI.Lower.Bound, CI.Upper.Bound, estimated.number, effective.sample.size***
 
 lets make a super simple plot with something in the data
-```{r}
+
+```r
 newdat <- hdat %>% filter(.,short.description=="ADHD", type=="STD",sex!="All")
 ggplot(newdat, aes(Prevalence_Mean,region,col=sex)) + geom_point()
 ```
+
+![](HealthMap_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
