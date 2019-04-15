@@ -15,8 +15,9 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, tidy = TRUE)
+knitr::opts_chunk$set(echo = TRUE, tidy = TRUE,dpi=600)
 library(tidyverse)
+library(kableExtra)
 ```
 
 ```{r readdata, cache = T, include = F}
@@ -27,10 +28,21 @@ hdat <- read_csv(file="data/nz-health-survey-2016-17-regional-update-dhb-prevale
 
 Lets take some health data from the [Ministry of Health](https://minhealthnz.shinyapps.io/nz-health-survey-2014-17-regional-update/_w_ffcb33f6/#!/home) Shiny App. tidy it up and plot it onto a Regional Map of New Zealand. The health website is it's own shiny app and we could do a lot of things there, but comparisons aren't so easy.
 
-
-
 This is a reasonable chunk of data, `r nrow(hdat)` lines with `r ncol(hdat)` columns with these headers   
 ***`r colnames(hdat)`***
+
+```{r demographics}
+hdat %>% count(.,population,Ethnicity) %>% 
+  kable(caption="Demographics", booktabs = T) %>% kable_styling(latex_options = "striped")
+```
+
+
+```{r categories}
+hdat %>% count(.,short.description) %>% 
+  kable(caption="Categories and Counts", booktabs = T, longtable = T) %>% 
+  kable_styling(latex_options = "striped", font_size = 7)
+```
+
 
 ## Plot
 lets make a super simple plot with something in the data
