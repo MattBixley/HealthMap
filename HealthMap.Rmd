@@ -35,6 +35,8 @@ This is a reasonable chunk of data, `r nrow(hdat)` lines with `r ncol(hdat)` col
 hdat %>% count(.,population,Ethnicity) %>% 
   kable(caption="Demographics", booktabs = T) %>% kable_styling(latex_options = "striped")
 ```
+  
+
 
 
 ```{r categories}
@@ -47,11 +49,18 @@ hdat %>% count(.,short.description) %>%
 ## Plot
 lets make a super simple plot with something in the data
 ```{r ADHD}
-newdat <- hdat %>% filter(.,short.description == "ADHD", 
-                          type == "STD", 
-                          sex != "All")
+hdat %>% filter(.,short.description == "ADHD", type == "STD", sex != "All") %>% 
+  ggplot(., aes(Prevalence_Mean,region,col=sex)) + geom_point()
+```
 
-ggplot(newdat, aes(Prevalence_Mean,region,col=sex)) + geom_point()
+```{r vegies}
+hdat %>% filter(.,short.description == "Vegetable intake", type == "STD", sex != "All") %>% 
+  ggplot(., aes(Prevalence_Mean,region,col=sex)) + geom_point()
+```
+
+```{r arthritis}
+hdat %>% filter(.,short.description == "Arthritis", type == "STD", sex == "All") %>% 
+  ggplot(., aes(Prevalence_Mean,region,col=year)) + geom_point()
 ```
 
 # References
