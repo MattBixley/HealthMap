@@ -83,20 +83,6 @@ library(sp)
 # https://gadm.org/download_country_v3.html
 # download NZ shapefiles
 
-#nz1 <- readRDS("data/gadm36_NZL_1_sp.rds")
-#nz2 <- readRDS("data/gadm36_NZL_2_sp.rds")
-
-#nz1$NAME_2 <- as.factor(nz1$NAME_1)
-#nz1$fake.data <- runif(length(nz1$NAME_1)) 
-
-#spplot(nz1,
-       "NAME_2", 
-       xlim=c(163,180), 
-       scales=list(draw=T), 
-       ylim=c(-50,-32), 
-       col.regions=rgb(nz1$fake.data, 1-nz1$fake.data, 0), 
-       colorkey=F)
-
 ## Avoid scientific notation
 options(scipen = 12)
 
