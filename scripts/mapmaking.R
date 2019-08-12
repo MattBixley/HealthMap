@@ -1,4 +1,5 @@
 #### ggplot2 map making
+library(tidyverse)
 library(ggplot2)
 library(ggmap)
 library(maps)
@@ -8,8 +9,7 @@ theme_set(
 )
 
 ## the world
-map.world <- map_data('world') %>% 
-  filter(region != "Antarctica")
+map.world <- map_data("world") 
 
 ggplot(map.world, aes(x = long, y = lat, group = group)) +
   geom_polygon(fill="lightgray", colour = "white")
@@ -58,7 +58,7 @@ ggplot(some.eu.maps, aes(x = long, y = lat)) +
   theme(legend.position = "none")
 
 library("WHO")
-library("tidyverse")
+
 life.exp <- get_data("WHOSIS_000001")             # Retrieve the data
 life.exp <- life.exp %>%
   filter(year == 2015 & sex == "Both sexes") %>%  # Keep data for 2015 and for both sex
@@ -83,13 +83,13 @@ library(sp)
 # https://gadm.org/download_country_v3.html
 # download NZ shapefiles
 
-nz1 <- readRDS("data/gadm36_NZL_1_sp.rds")
-nz2 <- readRDS("data/gadm36_NZL_2_sp.rds")
+#nz1 <- readRDS("data/gadm36_NZL_1_sp.rds")
+#nz2 <- readRDS("data/gadm36_NZL_2_sp.rds")
 
-nz1$NAME_2 <- as.factor(nz1$NAME_1)
-nz1$fake.data <- runif(length(nz1$NAME_1)) 
+#nz1$NAME_2 <- as.factor(nz1$NAME_1)
+#nz1$fake.data <- runif(length(nz1$NAME_1)) 
 
-spplot(nz1,
+#spplot(nz1,
        "NAME_2", 
        xlim=c(163,180), 
        scales=list(draw=T), 
@@ -106,8 +106,8 @@ sapply(lib, function(x) require(x, character.only = TRUE))
 
 ## Download and reproject data from gadm.org to UTM 60S
 nz1 <- getData("GADM", country = "NZ", level = 1)
-nz1 <- spTransform(nz1, CRS("+init=epsg:2135"))
-nz1 <- spTransform(nz1, CRS("+proj=utm +zone=60 +datum=WGS84"))
+#nz1 <- spTransform(nz1, CRS("+init=epsg:2135"))
+nz1 <- spTransform(nz1, CRS("+proj=utm +zone=59 +datum=WGS84"))
 
 ## Extract polygon corners and merge with shapefile data
 nz1@data$id <- rownames(nz1@data)
@@ -117,7 +117,7 @@ nz1.df <- merge(nz1@data, nz1.ff, by = "id", all.y = TRUE)
 ## Plot map
 ggplot() + 
   geom_polygon(data = nz1.df, aes(x = long, y = lat, group = group, fill = NAME_1), color = "black") +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
   labs(x = "x", y = "y") + 
   theme_bw()
 
