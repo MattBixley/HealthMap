@@ -1,3 +1,5 @@
+# https://www.spatialanalytics.co.nz/post/2018/11/01/plotting-new-zealand-with-r/
+
 library(sf)
 library(ggspatial)
 library(tidyverse)
@@ -56,6 +58,7 @@ ggplot(regions_simple_1000) +
                                         linetype = "dashed", size = 0.5),
         panel.background = element_rect(fill = "white"))
 
+
 # Unfortunately ggrepel cannot take sf objects so we convert 
 # the tas to centroids and then add the x, y to the ta data
 tas_centroids <- st_centroid(tas) %>% 
@@ -95,6 +98,7 @@ ggplot(regions_simple_1000) +
                                         linetype = "dashed", size = 0.5),
         panel.background = element_rect(fill = "white"),
         axis.title = element_blank())
+
 
 # We'll use the cowplot library to easily inset ggplot graphs / maps.
 library(cowplot)
@@ -207,3 +211,38 @@ nz_plot <-
         axis.title = element_blank())
 
 nz_plot
+
+###
+nz_regions$REGC2013_N2 <- str_replace(name," Region", "")
+
+nz_regions2 <- nz_regions %>% left_join(hdat, by = c("REGC2013_N2" = "region")) %>% 
+  filter(.,short.description == "ADHD" & type == "CRUDE")
+
+adhd_plot <- 
+  
+  # Create ggplot object
+  ggplot(nz_regions2) +
+  
+  # Add the data
+  geom_sf(aes(fill = Prevalence_Mean)) +
+  geom_sf(data = nz_tas, fill = NA, linetype = "dotted") + 
+  
+  # Add the title
+  ggtitle("ADHD Prevalence", 
+          subtitle = "per 1000 People") +
+  labs(fill = "Prevalence") + 
+  
+  # Add north arrow and scale bar
+  annotation_north_arrow(location = "bl", which_north = "true", 
+                         pad_x = unit(0.05, "in"), pad_y = unit(0.2, "in"),
+                         style = north_arrow_fancy_orienteering) + 
+  annotation_scale(location = "bl", width_hint = 0.5) +
+  
+  # Tinker with the theme a bit. 
+  theme_tufte() +
+  theme(panel.grid.major = element_line(color = gray(.5),
+                                        linetype = "dashed", size = 0.5),
+        panel.background = element_rect(fill = "white"),
+        axis.title = element_blank())
+
+adhd_plot
