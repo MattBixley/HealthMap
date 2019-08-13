@@ -1,4 +1,6 @@
 # https://www.spatialanalytics.co.nz/post/2018/11/01/plotting-new-zealand-with-r/
+# https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
+
 
 library(sf)
 library(ggspatial)
