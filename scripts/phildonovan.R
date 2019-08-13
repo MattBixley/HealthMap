@@ -212,12 +212,12 @@ nz_plot <-
 
 nz_plot
 
-###
+####### what i really want to do
 nz_regions$REGC2013_N2 <- str_replace(nz_regions$REGC2013_N," Region", "")
 hdat <- read_csv(file="data/nz-health-survey-2016-17-regional-update-dhb-prevalences.zip")
 
 nz_regions2 <- nz_regions %>% left_join(hdat, by = c("REGC2013_N2" = "region")) %>% 
-  filter(.,short.description == "ADHD" & type == "STD")
+  filter(.,short.description == "ADHD" & type == "CRUDE")
 
 adhd_plot <- 
   
@@ -231,12 +231,7 @@ adhd_plot <-
   # Add the title
   ggtitle("ADHD Prevalence", 
           subtitle = "per 1000 People") +
-  labs(fill = "Prevalence") + 
-  
-  # Tinker with the theme a bit. 
-  theme_tufte() +
-  theme(panel.background = element_rect(fill = "white"),
-        axis.title = element_blank())
+  labs(fill = "Prevalence")
 
 adhd_plot
 
