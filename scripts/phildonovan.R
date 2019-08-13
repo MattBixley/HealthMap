@@ -4,7 +4,7 @@ library(sf)
 library(ggspatial)
 library(tidyverse)
 library(ggthemes)
-devtools::install_github("phildonovan/nzcensr")
+#devtools::install_github("phildonovan/nzcensr")
 library(nzcensr)
 library(ggrepel)
 
@@ -213,10 +213,11 @@ nz_plot <-
 nz_plot
 
 ###
-nz_regions$REGC2013_N2 <- str_replace(name," Region", "")
+nz_regions$REGC2013_N2 <- str_replace(nz_regions$REGC2013_N," Region", "")
+hdat <- read_csv(file="data/nz-health-survey-2016-17-regional-update-dhb-prevalences.zip")
 
 nz_regions2 <- nz_regions %>% left_join(hdat, by = c("REGC2013_N2" = "region")) %>% 
-  filter(.,short.description == "ADHD" & type == "CRUDE")
+  filter(.,short.description == "ADHD" & type == "STD")
 
 adhd_plot <- 
   
@@ -232,17 +233,11 @@ adhd_plot <-
           subtitle = "per 1000 People") +
   labs(fill = "Prevalence") + 
   
-  # Add north arrow and scale bar
-  annotation_north_arrow(location = "bl", which_north = "true", 
-                         pad_x = unit(0.05, "in"), pad_y = unit(0.2, "in"),
-                         style = north_arrow_fancy_orienteering) + 
-  annotation_scale(location = "bl", width_hint = 0.5) +
-  
   # Tinker with the theme a bit. 
   theme_tufte() +
-  theme(panel.grid.major = element_line(color = gray(.5),
-                                        linetype = "dashed", size = 0.5),
-        panel.background = element_rect(fill = "white"),
+  theme(panel.background = element_rect(fill = "white"),
         axis.title = element_blank())
 
 adhd_plot
+
+adhd_plot + facet_grid(. ~ Ethnicity)
