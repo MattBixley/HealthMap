@@ -217,8 +217,8 @@ nz_plot
 ###
 nz_regions$REGC2013_N2 <- str_replace(name," Region", "")
 
-nz_regions2 <- nz_regions %>% left_join(hdat, by = c("REGC2013_N2" = "region")) %>% 
-  filter(.,short.description == "ADHD" & type == "CRUDE")
+nz_regions2 <- nz_regions %>% left_join(hdat, by = c("REGC2013_N3" = "region")) %>% 
+  filter(.,short.description == "ADHD" & type == "CRUDE", REGC2013_N3 == "Southern")
 
 adhd_plot <- 
   
@@ -232,19 +232,47 @@ adhd_plot <-
   # Add the title
   ggtitle("ADHD Prevalence", 
           subtitle = "per 1000 People") +
-  labs(fill = "Prevalence") + 
-  
-  # Add north arrow and scale bar
-  annotation_north_arrow(location = "bl", which_north = "true", 
-                         pad_x = unit(0.05, "in"), pad_y = unit(0.2, "in"),
-                         style = north_arrow_fancy_orienteering) + 
-  annotation_scale(location = "bl", width_hint = 0.5) +
-  
-  # Tinker with the theme a bit. 
-  theme_tufte() +
-  theme(panel.grid.major = element_line(color = gray(.5),
-                                        linetype = "dashed", size = 0.5),
-        panel.background = element_rect(fill = "white"),
-        axis.title = element_blank())
+  labs(fill = "Prevalence")
 
 adhd_plot
+
+adhd_plot + facet_grid(. ~ sex)
+
+unique(hdat$region)[unique(hdat$region) %in% unique(nz_regions$REGC2013_N2)]
+unique(nz_regions$REGC2013_N3)[unique(nz_regions$REGC2013_N3) %in% unique(hdat$region)]
+
+unique(hdat$region)
+unique(nz_regions$REGC2013_N2)
+
+###
+hdat <- read_csv(file="data/nz-health-survey-2016-17-regional-update-dhb-prevalences.zip")
+
+# Regions data is lazy loaded by the nzcensr and simplify
+regions_simple_1000 <- st_simplify(regions, dTolerance = 1000)
+
+nz_regions <- regions_simple_1000 %>%
+  filter(REGC2013 != 99) %>% 
+  mutate(REGC2013_N2 = str_replace(name," Region", "")) %>% 
+  mutate(REGC2013_N3 = recode_factor(REGC2013_N2, "Otago" = "Southern", "Southland" = "Southern",
+                                     "Nelson" = "Nelson Marlborough", "Marlborough" = "Nelson Marlborough", "Tasman" = "Nelson Marlborough",
+                                     "Wellington" = "Capital & Coast", "Gisborne" = "Tairawhiti" ,
+                                     "Manawatu-Wanganui" = "Whanganui" ))
+
+
+
+nz_regions2 <- nz_regions %>% left_join(hdat, by = c("REGC2013_N3" = "region")) %>% 
+  filter(.,short.description == "ADHD" & type == "CRUDE")
+
+adhd_plot <- 
+  # Create ggplot object
+  ggplot(nz_regions2) +
+  # Add the data
+  geom_sf(aes(fill = Prevalence_Mean)) +
+  geom_sf(data = nz_tas, fill = NA, linetype = "dotted") + 
+  # Add the title
+  ggtitle("ADHD Prevalence", 
+          subtitle = "per 1000 People") +
+  labs(fill = "Prevalence")
+
+adhd_plot
+
