@@ -6,7 +6,7 @@ library(sf)
 library(ggspatial)
 library(tidyverse)
 library(ggthemes)
-devtools::install_github("phildonovan/nzcensr")
+#devtools::install_github("phildonovan/nzcensr")
 library(nzcensr)
 library(ggrepel)
 
@@ -214,8 +214,9 @@ nz_plot <-
 
 nz_plot
 
-###
-nz_regions$REGC2013_N2 <- str_replace(name," Region", "")
+####### what i really want to do
+nz_regions$REGC2013_N2 <- str_replace(nz_regions$REGC2013_N," Region", "")
+hdat <- read_csv(file="data/nz-health-survey-2016-17-regional-update-dhb-prevalences.zip")
 
 nz_regions2 <- nz_regions %>% left_join(hdat, by = c("REGC2013_N3" = "region")) %>% 
   filter(.,short.description == "ADHD" & type == "CRUDE", REGC2013_N3 == "Southern")
@@ -235,6 +236,7 @@ adhd_plot <-
   labs(fill = "Prevalence")
 
 adhd_plot
+<<<<<<< HEAD
 
 adhd_plot + facet_grid(. ~ sex)
 
@@ -276,3 +278,4 @@ adhd_plot <-
 
 adhd_plot
 
+adhd_plot + facet_grid(. ~ Ethnicity)

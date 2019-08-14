@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.26)  13 AUG 2019 10:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.26)  13 AUG 2019 13:06
 entering extended mode
 **./HealthMap.tex
 (HealthMap.tex
@@ -1120,96 +1120,105 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \openout5 = `HealthMap.toc'.
 
 
-Package xcolor Warning: Incompatible color definition on input line 165.
+Package xcolor Warning: Incompatible color definition on input line 149.
 
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 166.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 150.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 167.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 151.
 
-Package xcolor Warning: Incompatible color definition on input line 170.
-
-
-Package xcolor Warning: Incompatible color definition on input line 170.
+Package xcolor Warning: Incompatible color definition on input line 153.
 
 
-Package xcolor Warning: Incompatible color definition on input line 193.
+Package xcolor Warning: Incompatible color definition on input line 153.
 
 
-Package xcolor Warning: Incompatible color definition on input line 199.
+Package xcolor Warning: Incompatible color definition on input line 192.
 
 
-Package xcolor Warning: Incompatible color definition on input line 199.
+Package xcolor Warning: Incompatible color definition on input line 197.
+
+
+Package xcolor Warning: Incompatible color definition on input line 197.
+
+
+Package xcolor Warning: Incompatible color definition on input line 220.
+
+
+Package xcolor Warning: Incompatible color definition on input line 226.
+
+
+Package xcolor Warning: Incompatible color definition on input line 226.
 
 [1
 
 {C:/Users/Matt/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
 
-Package xcolor Warning: Incompatible color definition on input line 358.
-
-
-Package xcolor Warning: Incompatible color definition on input line 363.
-
-
-Package xcolor Warning: Incompatible color definition on input line 363.
-
-<HealthMap_files/figure-latex/ADHD-1.jpeg, id=39, 505.89pt x 289.08pt>
-File: HealthMap_files/figure-latex/ADHD-1.jpeg Graphic file (type jpg)
-<use HealthMap_files/figure-latex/ADHD-1.jpeg>
-Package pdftex.def Info: HealthMap_files/figure-latex/ADHD-1.jpeg used on input
- line 365.
-(pdftex.def)             Requested size: 469.76265pt x 268.43579pt.
-
-Package xcolor Warning: Incompatible color definition on input line 367.
+Package xcolor Warning: Incompatible color definition on input line 385.
 
 [3]
 
-Package xcolor Warning: Incompatible color definition on input line 372.
+Package xcolor Warning: Incompatible color definition on input line 390.
 
 
-Package xcolor Warning: Incompatible color definition on input line 372.
+Package xcolor Warning: Incompatible color definition on input line 390.
+
+<HealthMap_files/figure-latex/ADHD-1.jpeg, id=43, 505.89pt x 289.08pt>
+File: HealthMap_files/figure-latex/ADHD-1.jpeg Graphic file (type jpg)
+<use HealthMap_files/figure-latex/ADHD-1.jpeg>
+Package pdftex.def Info: HealthMap_files/figure-latex/ADHD-1.jpeg used on input
+ line 392.
+(pdftex.def)             Requested size: 469.76265pt x 268.43579pt.
+
+Package xcolor Warning: Incompatible color definition on input line 394.
+
+
+Package xcolor Warning: Incompatible color definition on input line 399.
+
+
+Package xcolor Warning: Incompatible color definition on input line 399.
 
 <HealthMap_files/figure-latex/vegies-1.jpeg, id=44, 505.89pt x 289.08pt>
 File: HealthMap_files/figure-latex/vegies-1.jpeg Graphic file (type jpg)
 <use HealthMap_files/figure-latex/vegies-1.jpeg>
 Package pdftex.def Info: HealthMap_files/figure-latex/vegies-1.jpeg used on inp
-ut line 374.
+ut line 401.
 (pdftex.def)             Requested size: 469.76265pt x 268.43579pt.
 
-Package xcolor Warning: Incompatible color definition on input line 376.
+Package xcolor Warning: Incompatible color definition on input line 403.
 
 [4pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.376 \begin{Shaded}
+l.403 \begin{Shaded}
                      <./HealthMap_files/figure-latex/ADHD-1.jpeg>]
 
-Package xcolor Warning: Incompatible color definition on input line 381.
+Package xcolor Warning: Incompatible color definition on input line 408.
 
 
-Package xcolor Warning: Incompatible color definition on input line 381.
+Package xcolor Warning: Incompatible color definition on input line 408.
 
 <HealthMap_files/figure-latex/arthritis-1.jpeg, id=50, 505.89pt x 289.08pt>
 File: HealthMap_files/figure-latex/arthritis-1.jpeg Graphic file (type jpg)
 <use HealthMap_files/figure-latex/arthritis-1.jpeg>
 Package pdftex.def Info: HealthMap_files/figure-latex/arthritis-1.jpeg used on 
-input line 383.
+input line 410.
 (pdftex.def)             Requested size: 469.76265pt x 268.43579pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 388.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
 [5 <./HealthMap_files/figure-latex/vegies-1.jpeg> <./HealthMap_files/figure-lat
 ex/arthritis-1.jpeg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 388.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
 (HealthMap.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 388.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 388.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
 Package rerunfilecheck Info: File `HealthMap.out' has not changed.
 (rerunfilecheck)             Checksum: BCC8BD161B7848BC630D891F8328D5C9;383.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 388.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 415.
  ) 
 Here is how much of TeX's memory you used:
  14688 strings out of 493328
@@ -1227,7 +1236,7 @@ ram Files/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/lm/lmri12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtk10.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
-Output written on HealthMap.pdf (5 pages, 1945499 bytes).
+Output written on HealthMap.pdf (5 pages, 1946782 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  12 named destinations out of 1000 (max. 500000)
